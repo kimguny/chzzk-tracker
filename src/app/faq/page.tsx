@@ -44,7 +44,7 @@ const faqs = [
 export default function FaqPage() {
   return (
     <div className="flex-1" style={{ color: "#fff" }}>
-      <div className="mx-auto max-w-3xl px-4 py-12">
+      <div className="mx-auto max-w-4xl px-4 py-12">
         <div className="mb-10">
           <Link href="/" className="text-sm" style={{ color: "#555" }}>
             ← 돌아가기
