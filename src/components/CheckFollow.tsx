@@ -275,7 +275,7 @@ export default function CheckFollow() {
             치지직 <span style={{ color: "#00FFA3" }}>팔로우 분석기</span>
           </h1>
           <p className="mt-2 text-sm" style={{ color: "#666" }}>
-            팔로워/팔로잉 현황 확인 · 맞팔 취소한 사람 감지
+            팔로워/팔로잉 현황 확인
           </p>
         </div>
 
