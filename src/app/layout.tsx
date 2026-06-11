@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "치지직 팔로우 분석기",
-  description: "치지직 팔로워/팔로잉 현황 분석 및 맞팔 취소 감지 서비스",
+  description: "치지직 팔로워/팔로잉 현황 분석 서비스",
   other: {
     "google-adsense-account": "ca-pub-7999168388112475",
   },

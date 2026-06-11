@@ -40,7 +40,7 @@ export default function PrivacyPage() {
           <section>
             <h2 className="mb-3 text-base font-bold" style={{ color: "#fff" }}>2. 로컬 저장소 사용</h2>
             <p>
-              맞팔 취소 감지 기능을 위해 이전 조회 결과(닉네임 목록, 조회 시각)를 사용자 본인의 브라우저 로컬 저장소(localStorage)에 저장합니다.
+              팔로우 현황 비교를 위해 이전 조회 결과(닉네임 목록, 조회 시각)를 사용자 본인의 브라우저 로컬 저장소(localStorage)에 저장합니다.
               이 데이터는 서버로 전송되지 않으며, 브라우저에서 직접 삭제할 수 있습니다.
             </p>
           </section>
