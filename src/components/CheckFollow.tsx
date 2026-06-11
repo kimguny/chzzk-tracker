@@ -14,16 +14,34 @@ const TABS: { key: TabKey; label: string; accent: boolean }[] = [
   { key: "onlyFollowers", label: "상대만 팔로워", accent: false },
 ];
 
+const PAGE_SIZE = 50;
+
 function ResultTabs({ result }: { result: ChzzkResponse }) {
   const [activeTab, setActiveTab] = useState<TabKey>("followers");
   const [query, setQuery] = useState("");
+  const [page, setPage] = useState(1);
 
   const items = result[activeTab] ?? [];
   const filtered = query
     ? items.filter((name) => name.toLowerCase().includes(query.toLowerCase()))
     : items;
 
+  const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
+  const currentPage = Math.min(page, totalPages);
+  const paginated = filtered.slice((currentPage - 1) * PAGE_SIZE, currentPage * PAGE_SIZE);
+
   const activeAccent = TABS.find((t) => t.key === activeTab)?.accent ?? false;
+
+  const switchTab = (key: TabKey) => {
+    setActiveTab(key);
+    setQuery("");
+    setPage(1);
+  };
+
+  const handleSearch = (value: string) => {
+    setQuery(value);
+    setPage(1);
+  };
 
   return (
     <div className="rounded-xl overflow-hidden" style={{ border: "1px solid #2a2a2a" }}>
@@ -35,7 +53,7 @@ function ResultTabs({ result }: { result: ChzzkResponse }) {
           return (
             <button
               key={tab.key}
-              onClick={() => { setActiveTab(tab.key); setQuery(""); }}
+              onClick={() => switchTab(tab.key)}
               className="flex-shrink-0 px-4 py-3 text-sm font-semibold transition-colors whitespace-nowrap"
               style={{
                 color: isActive ? (tab.accent ? "#00FFA3" : "#fff") : "#555",
@@ -60,7 +78,7 @@ function ResultTabs({ result }: { result: ChzzkResponse }) {
         <input
           type="text"
           value={query}
-          onChange={(e) => setQuery(e.target.value)}
+          onChange={(e) => handleSearch(e.target.value)}
           placeholder="닉네임 검색..."
           className="w-full rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#00FFA3]"
           style={{ background: "#111", border: "1px solid #2a2a2a", color: "#fff" }}
@@ -74,9 +92,9 @@ function ResultTabs({ result }: { result: ChzzkResponse }) {
 
       {/* List */}
       <div className="px-4 py-3" style={{ background: "#1a1a1a", minHeight: "200px" }}>
-        {filtered.length > 0 ? (
+        {paginated.length > 0 ? (
           <ul className="space-y-0.5 text-sm" style={{ color: "#ccc" }}>
-            {filtered.map((name, i) => (
+            {paginated.map((name, i) => (
               <li
                 key={i}
                 className="py-2 px-2 rounded transition-colors hover:bg-[#222]"
@@ -92,6 +110,34 @@ function ResultTabs({ result }: { result: ChzzkResponse }) {
           </p>
         )}
       </div>
+
+      {/* Pagination */}
+      {totalPages > 1 && (
+        <div
+          className="px-4 py-3 flex items-center justify-between text-sm"
+          style={{ background: "#111", borderTop: "1px solid #2a2a2a" }}
+        >
+          <button
+            onClick={() => setPage((p) => Math.max(1, p - 1))}
+            disabled={currentPage === 1}
+            className="px-3 py-1 rounded disabled:opacity-30 transition-opacity"
+            style={{ background: "#2a2a2a", color: "#fff" }}
+          >
+            ← 이전
+          </button>
+          <span style={{ color: "#555" }}>
+            {currentPage} / {totalPages}
+          </span>
+          <button
+            onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
+            disabled={currentPage === totalPages}
+            className="px-3 py-1 rounded disabled:opacity-30 transition-opacity"
+            style={{ background: "#2a2a2a", color: "#fff" }}
+          >
+            다음 →
+          </button>
+        </div>
+      )}
     </div>
   );
 }
