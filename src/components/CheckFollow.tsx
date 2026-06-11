@@ -345,32 +345,6 @@ export default function CheckFollow() {
           </button>
         </div>
 
-        {/* Previous snapshot info */}
-        {prevSnapshot && (
-          <p className="mb-4 text-xs" style={{ color: "#444" }}>
-            이전 조회: {new Date(prevSnapshot.timestamp).toLocaleString("ko-KR")} · 맞팔 {prevSnapshot.mutualFollows.length}명
-          </p>
-        )}
-
-        {/* Unfollowers alert */}
-        {unfollowers && unfollowers.length > 0 && (
-          <div className="mb-6 rounded-xl p-5" style={{ background: "#1a0a0a", border: "1px solid #ff4d4d" }}>
-            <h2 className="mb-3 font-bold" style={{ color: "#ff4d4d" }}>
-              맞팔 취소한 사람 {unfollowers.length}명
-            </h2>
-            <ul className="text-sm space-y-1" style={{ color: "#ff8080" }}>
-              {unfollowers.map((name, i) => (
-                <li key={i}>{name}</li>
-              ))}
-            </ul>
-          </div>
-        )}
-
-        {unfollowers && unfollowers.length === 0 && result && (
-          <p className="mb-4 text-sm" style={{ color: "#00FFA3" }}>
-            이전 조회 대비 맞팔 취소한 사람이 없습니다.
-          </p>
-        )}
 
         {/* Results */}
         {result && <ResultTabs result={result} />}
