@@ -44,6 +44,12 @@ export default function RootLayout({
           </div>
         </header>
         {children}
+        <footer className="mt-auto py-6" style={{ borderTop: "1px solid #1a1a1a" }}>
+          <div className="mx-auto max-w-4xl px-4 flex gap-4 text-xs" style={{ color: "#444" }}>
+            <Link href="/privacy" style={{ color: "#444" }}>개인정보처리방침</Link>
+            <Link href="/faq" style={{ color: "#444" }}>FAQ</Link>
+          </div>
+        </footer>
         <Analytics />
       </body>
     </html>
