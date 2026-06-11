@@ -112,9 +112,20 @@ function GuideSection() {
         <div className="px-5 py-4 space-y-4 text-sm" style={{ background: "#111", color: "#aaa" }}>
           <div>
             <p className="font-semibold mb-1" style={{ color: "#fff" }}>① NID_AUT / NID_SES 쿠키</p>
+            <p className="mb-2">
+              <span style={{ color: "#00FFA3" }}>방법 1 — 크롬 확장 프로그램 (더 간편)</span>
+            </p>
+            <ol className="list-decimal list-inside space-y-1 mb-3">
+              <li>크롬 웹스토어에서 <span style={{ color: "#00FFA3" }}>Cookie-Editor</span> 확장 설치</li>
+              <li>chzzk.naver.com 접속 후 로그인</li>
+              <li>확장 아이콘 클릭 → <span style={{ color: "#00FFA3" }}>NID_AUT</span>, <span style={{ color: "#00FFA3" }}>NID_SES</span> 값 복사</li>
+            </ol>
+            <p className="mb-2">
+              <span style={{ color: "#888" }}>방법 2 — 개발자 도구</span>
+            </p>
             <ol className="list-decimal list-inside space-y-1">
-              <li>브라우저에서 <span style={{ color: "#00FFA3" }}>chzzk.naver.com</span> 접속 후 네이버 계정으로 로그인</li>
-              <li>개발자 도구 열기 <span style={{ color: "#555" }}>(F12 또는 Cmd+Option+I)</span></li>
+              <li>chzzk.naver.com 접속 후 로그인</li>
+              <li>개발자 도구 열기 <span style={{ color: "#555" }}>(Windows: F12 / Mac: Cmd+Option+I)</span></li>
               <li>Application 탭 → Cookies → <span style={{ color: "#00FFA3" }}>https://chzzk.naver.com</span> 선택</li>
               <li><span style={{ color: "#00FFA3" }}>NID_AUT</span>와 <span style={{ color: "#00FFA3" }}>NID_SES</span>의 Value 값을 각각 복사</li>
             </ol>
