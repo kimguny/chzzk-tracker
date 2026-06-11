@@ -208,7 +208,7 @@ export default function CheckFollow() {
   const labelStyle = { color: "#888" };
 
   return (
-    <div className="min-h-screen" style={{ background: "#0a0a0a", color: "#fff" }}>
+    <div className="flex-1" style={{ color: "#fff" }}>
       <div className="mx-auto max-w-4xl px-4 py-12">
 
         {/* Header */}

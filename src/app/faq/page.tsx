@@ -43,7 +43,7 @@ const faqs = [
 
 export default function FaqPage() {
   return (
-    <div className="min-h-screen" style={{ background: "#0a0a0a", color: "#fff" }}>
+    <div className="flex-1" style={{ color: "#fff" }}>
       <div className="mx-auto max-w-3xl px-4 py-12">
         <div className="mb-10">
           <Link href="/" className="text-sm" style={{ color: "#555" }}>
