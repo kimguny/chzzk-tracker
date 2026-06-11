@@ -41,6 +41,15 @@ export default function RootLayout({
             <div className="flex items-center gap-4">
               <Link href="/faq" className="text-sm" style={{ color: "#888" }}>FAQ</Link>
               <Link href="/privacy" className="text-sm" style={{ color: "#888" }}>개인정보처리방침</Link>
+              <a
+                href="https://github.com/kimguny/chzzk-tracker"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm"
+                style={{ color: "#00FFA3" }}
+              >
+                GitHub
+              </a>
             </div>
           </div>
         </header>

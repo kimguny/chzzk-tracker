@@ -138,9 +138,21 @@ function GuideSection() {
               <li>해당 값을 채널 ID 입력칸에 붙여넣기</li>
             </ol>
           </div>
-          <p className="text-xs" style={{ color: "#555" }}>
-            ※ 쿠키값은 이 서버에 저장되지 않으며, 치지직 API 조회 후 즉시 폐기됩니다.
-          </p>
+          <div className="text-xs space-y-1" style={{ color: "#555" }}>
+            <p>※ 쿠키값은 이 서버에 저장되지 않으며, 치지직 API 조회 후 즉시 폐기됩니다.</p>
+            <p>
+              ※ 본 서비스의 전체 코드는{" "}
+              <a
+                href="https://github.com/kimguny/chzzk-tracker"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ color: "#00FFA3" }}
+              >
+                GitHub에 공개
+              </a>
+              되어 있어 누구나 직접 확인할 수 있습니다.
+            </p>
+          </div>
         </div>
       )}
     </div>
