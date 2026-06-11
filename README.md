@@ -1,36 +1,40 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 치지직 팔로우 분석기
 
-## Getting Started
+치지직 팔로워/팔로잉 현황을 분석하고, **맞팔 취소한 사람을 자동으로 감지**하는 서비스.
 
-First, run the development server:
+## 기능
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **팔로우 분석** — 팔로워 / 팔로잉 / 맞팔 / 나만 팔로우 / 상대만 팔로워 분류
+- **맞팔 취소 감지** — 이전 조회와 비교해 맞팔을 끊은 사람 자동 표시
+- **닉네임 검색** — 각 카테고리별 실시간 검색
+- **최대 조회 수 설정** — 팔로우가 많은 채널도 직접 범위 지정 가능
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 사용 방법
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 1. NID_AUT / NID_SES 쿠키 가져오기
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. [chzzk.naver.com](https://chzzk.naver.com) 접속 후 네이버 계정으로 로그인
+2. 개발자 도구 열기 `F12` 또는 `Cmd + Option + I`
+3. **Application** 탭 → **Cookies** → `https://chzzk.naver.com` 선택
+4. `NID_AUT`, `NID_SES` 값 복사
 
-## Learn More
+### 2. 채널 ID 가져오기
 
-To learn more about Next.js, take a look at the following resources:
+1. 치지직 로그인 후 우측 상단 프로필 → **내 채널** 클릭
+2. 주소창 URL 확인: `chzzk.naver.com/{여기가 채널 ID}`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 3. 분석 실행
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+입력값을 채우고 **팔로우 분석 시작** 버튼 클릭.  
+두 번째 조회부터는 이전 맞팔과 비교해 취소한 사람을 자동으로 표시합니다.
 
-## Deploy on Vercel
+## 기술 스택
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Next.js 16** (App Router)
+- **Tailwind CSS 4**
+- **Vercel** 배포 (서버리스, 백엔드 없음)
+- 히스토리는 **localStorage** 저장 (서버에 데이터 보관 없음)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 개인정보 안내
+
+입력한 쿠키값은 치지직 API 조회에만 사용되며, 서버에 저장되지 않습니다.
